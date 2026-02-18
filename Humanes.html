@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humanex Foundation | Because Humanity Matters</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#141e30,#243b55,#0f2027);color:#fff;overflow-x:hidden;}
+#preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:#0f2027;display:flex;justify-content:center;align-items:center;z-index:9999;}
+#preloader .intro-logo{width:130px;height:130px;border-radius:50%;background:linear-gradient(45deg,#00f2fe,#ff00c8);display:flex;align-items:center;justify-content:center;font-size:45px;font-weight:700;color:#fff;animation:zoomIn 1.5s ease-in-out infinite alternate;box-shadow:0 0 40px #ff00c8;}
+@keyframes zoomIn{0%{transform:scale(0.8);}100%{transform:scale(1.1);}}
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 50px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:1000;}
+header h1{font-weight:700;background:linear-gradient(45deg,#00f2fe,#ff00c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+nav a{color:#fff;margin-left:25px;text-decoration:none;font-size:14px;position:relative;transition:.2s;}
+nav a:hover{color:#00f2fe;}
+nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0%;height:2px;background:#ff00c8;transition:.4s;}
+nav a:hover::after{width:100%;}
+section{padding:120px 10%;min-height:100vh;}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:100%;height:100%;top:0;left:0;background-size:cover;background-position:center;animation:slide 18s infinite;z-index:-1;}
+@keyframes slide{0%{background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d')}33%{background-image:url('https://images.unsplash.com/photo-1593113630400-ea4288922497')}66%{background-image:url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb')}100%{background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d')}}
+.hero::after{content:'';position:absolute;width:100%;height:100%;background:rgba(0,0,0,.65);top:0;left:0;z-index:-1;}
+.hero h2{font-size:55px;background:linear-gradient(45deg,#00f2fe,#ff00c8,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 6s infinite alternate;}
+@keyframes glow{from{text-shadow:0 0 10px #00f2fe}to{text-shadow:0 0 25px #ff00c8}}
+.btn{margin-top:30px;padding:12px 30px;border:none;border-radius:30px;background:linear-gradient(45deg,#00f2fe,#ff00c8);color:#fff;cursor:pointer;transition:.4s;}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 25px #ff00c8;}
+.about-container{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
+.about-container img{width:100%;max-width:450px;border-radius:20px;box-shadow:0 0 30px rgba(255,0,200,.5);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.card{background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;backdrop-filter:blur(12px);transition:.4s;}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 30px #ff00c8;}
+.card img{width:100%;height:220px;object-fit:cover;}
+form{background:rgba(255,255,255,0.07);padding:30px;border-radius:20px;backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.2);transition:.4s;position:relative;overflow:hidden;}
+form:hover{box-shadow:0 0 40px #00f2fe;}
+form::before{content:'HUMANEX';position:absolute;font-size:90px;opacity:.04;top:40%;left:20%;transform:rotate(-25deg);}
+form input, form textarea, form select{width:100%;padding:12px;margin:12px 0;border:none;border-radius:10px;outline:none;}
+form input:focus, form textarea:focus, form select:focus{box-shadow:0 0 15px #ff00c8;}
+form button{width:100%;padding:12px;border:none;border-radius:30px;background:linear-gradient(45deg,#00f2fe,#ff00c8);color:#fff;cursor:pointer;}
+footer{background:#000;text-align:center;padding:25px;}
+.social a{color:#fff;margin:0 15px;font-size:22px;transition:.3s;}
+.social a:hover{color:#ff00c8}
+.whatsapp{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;padding:15px;border-radius:50%;font-size:22px;box-shadow:0 0 20px #25D366;}
+.movable-logo{position:fixed;top:120px;left:30px;width:80px;height:80px;border-radius:50%;background:linear-gradient(45deg,#00f2fe,#ff00c8);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;cursor:grab;z-index:2000;box-shadow:0 0 20px #ff00c8;user-select:none;animation:floatLogo 3s ease-in-out infinite;}
+.movable-logo:active{cursor:grabbing;}
+@keyframes floatLogo{0%{transform:translateY(0px);}50%{transform:translateY(-15px);}100%{transform:translateY(0px);}}
+#workDetails{display:none;margin-top:50px;animation:fadeInWork .6s ease;}
+@keyframes fadeInWork{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.work-detail-box{background:rgba(255,255,255,0.08);padding:40px;border-radius:25px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);box-shadow:0 0 40px rgba(255,0,200,.4);text-align:center;}
+.work-detail-box img{width:100%;max-width:550px;border-radius:20px;margin-bottom:25px;box-shadow:0 0 25px rgba(0,242,254,.5);}
+.back-btn{margin-top:25px;padding:12px 35px;border:none;border-radius:30px;background:linear-gradient(45deg,#ff00c8,#00f2fe);color:#fff;cursor:pointer;transition:.3s;box-shadow:0 0 25px #ff00c8;}
+.back-btn:hover{transform:scale(1.1);box-shadow:0 0 40px #00f2fe;}
+#formPopup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,0.1);padding:40px;border-radius:25px;backdrop-filter:blur(25px);border:1px solid rgba(255,255,255,0.3);box-shadow:0 0 40px #00f2fe;display:none;z-index:3000;text-align:center;width:90%;max-width:400px;}
+#formPopup h3{margin-bottom:15px;}
+.close-popup{margin-top:20px;padding:10px 25px;border:none;border-radius:25px;background:linear-gradient(45deg,#00f2fe,#ff00c8);color:#fff;cursor:pointer;box-shadow:0 0 20px #ff00c8;}
+</style>
+</head>
+<body>
+
+<div id="preloader"><div class="intro-logo">H</div></div>
+<div class="movable-logo" id="logo">H</div>
+
+<header>
+<h1>Humanex Foundation</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#work">What We Do</a>
+<a href="#join">Join Us</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section id="home" class="hero">
+<h2>Humanex Foundation</h2>
+<p>Because Humanity Matters</p>
+<button class="btn" onclick="document.getElementById('join').scrollIntoView()">Join Our Mission</button>
+</section>
+
+<section id="about">
+<h3 style="text-align:center;margin-bottom:40px;">About Us</h3>
+<div class="about-container">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+<p>
+Humanex Foundation is a beacon of hope and humanity, dedicated to fostering compassion, dignity, and meaningful community service. We strive to create a world where empathy drives action, and every individual—regardless of background—receives the support and respect they deserve.  
+
+Through a blend of grassroots initiatives, targeted welfare programs, and community-driven projects, we empower underprivileged communities, providing education, essential resources, and social awareness programs.  
+
+Our approach is rooted in transparency, accountability, and ethical service. At Humanex Foundation, every initiative is more than assistance—it is a step toward building resilient, inclusive communities where kindness and collaboration inspire lasting change.  
+
+Join us in turning compassion into action, and together, we can shape a brighter, more humane future for all.
+</p>
+</div>
+</section>
+
+<section id="work">
+<h3 style="text-align:center;margin-bottom:40px;">What We Do</h3>
+<div class="cards" id="cardContainer">
+<div class="card" onclick="openWork(1)"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><div style="padding:20px;">Disaster Relief & Humanitarian Assistance</div></div>
+<div class="card" onclick="openWork(2)"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><div style="padding:20px;">Medical & Emergency Support</div></div>
+<div class="card" onclick="openWork(3)"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><div style="padding:20px;">Community & Food Support Programs</div></div>
+</div>
+<div id="workDetails"></div>
+</section>
+
+<!-- =================== JOIN US FORM =================== -->
+<section id="join">
+<h3 style="text-align:center;margin-bottom:40px;">Join Us</h3>
+<form id="joinForm">
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Email Address" required>
+  <select id="role" required>
+    <option value="">Select Role</option>
+    <option>Volunteer</option>
+    <option>Medical Support</option>
+    <option>Field Coordinator</option>
+    <option>General Supporter</option>
+  </select>
+  <textarea id="message" placeholder="Why do you want to join?"></textarea>
+  <button type="button" onclick="previewForm()">Preview</button>
+</form>
+<div id="previewBox" style="margin-top:20px;"></div>
+<div id="formPopup">
+<h3>Form Submitted!</h3>
+<p>Thank you for joining Humanex Foundation. We will contact you soon.</p>
+<button class="close-popup" onclick="closePopup()">Close</button>
+</div>
+</section>
+
+<section id="contact">
+<h3 style="text-align:center;margin-bottom:20px;">Contact</h3>
+<p style="text-align:center;">
+Email: humanexfoundation@gmail.com<br>
+Location:Kendrapara  Odisha
+Contact:9878895558
+</p>
+</section>
+
+<footer>
+© 2026 Humanex Foundation | Registration under process
+<div class="social">
+<a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+</footer>
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+window.addEventListener("load",function(){
+setTimeout(function(){document.getElementById("preloader").style.display="none";},4000);
+});
+
+/* MOVABLE LOGO */
+const logo=document.getElementById("logo");
+let isDragging=false, offsetX, offsetY;
+logo.addEventListener("mousedown",(e)=>{isDragging=true;offsetX=e.clientX-logo.offsetLeft;offsetY=e.clientY-logo.offsetTop;logo.style.cursor="grabbing";});
+document.addEventListener("mousemove",(e)=>{if(!isDragging)return;logo.style.left=(e.clientX-offsetX)+"px";logo.style.top=(e.clientY-offsetY)+"px";});
+document.addEventListener("mouseup",()=>{isDragging=false;logo.style.cursor="grab";});
+
+/* WORK DETAILS */
+function openWork(type){
+document.getElementById("cardContainer").style.display="none";
+const details=document.getElementById("workDetails"); details.style.display="block";
+if(type===1){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><h2>Disaster Relief & Humanitarian Assistance</h2>
+<p>At Humanex Foundation, we respond swiftly and effectively to crises, ensuring that affected communities receive timely and meaningful support. Our disaster relief efforts are designed to bring hope and stability in the most challenging situations. Key initiatives include:</p>
+
+<ul>
+  <li><b>Emergency Food & Water Distribution:</b> Providing nutritious meals and clean drinking water to families affected by natural disasters.</li>
+  <li><b>Temporary Shelter & Safety:</b> Setting up safe shelters and providing essential supplies to ensure dignity and protection for displaced individuals.</li>
+  <li><b>Medical Aid & First Response:</b> Rapid deployment of medical teams and essential medicines to address immediate health needs during emergencies.</li>
+  <li><b>Community Support & Counseling:</b> Offering psychological support, guidance, and community engagement to help survivors rebuild their lives.</li>
+  <li><b>Preparedness Programs:</b> Educating communities on disaster readiness, safety protocols, and resilience-building strategies to minimize future risks.</li>
+</ul>
+
+<p>Through our focused efforts, Humanex Foundation ensures that relief reaches those who need it most—fast, fair, and with compassion at the core of every action.</p>
+<button class="back-btn" onclick="goBack()">Back</button></div>`;}
+if(type===2){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><h2>Medical & Emergency Support</h2>
+<p>Humanex Foundation provides timely medical assistance to communities in need. Our initiatives focus on ensuring health and well-being for everyone, especially during emergencies:</p>
+
+<ul>
+  <li><b>Health Camps:</b> Organizing free health check-ups and awareness sessions.</li>
+  <li><b>Emergency Care:</b> Supporting urgent medical needs for individuals who cannot access care.</li>
+  <li><b>Critical Treatment Support:</b> Assisting underprivileged patients with medications and treatments.</li>
+</ul>
+
+<p>We believe that access to healthcare is a right, and our mission is to provide help when it matters most.</p>
+<button class="back-btn" onclick="goBack()">Back</button></div>`;}
+if(type===3){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><h2>Community & Food Support Programs</h2>
+<p>We work to strengthen communities by ensuring basic needs are met and people are supported with dignity:</p>
+
+<ul>
+  <li><b>Food Distribution Drives:</b> Providing nutritious meals to families and individuals in need.</li>
+  <li><b>Community Welfare Activities:</b> Supporting education, hygiene, and social awareness programs.</li>
+  <li><b>Empowerment & Engagement:</b> Encouraging community participation and sustainable growth.</li>
+</ul>
+
+<p>Our goal is to create resilient communities where no one is left behind and everyone has the opportunity to thrive.</p>
+<button class="back-btn" onclick="goBack()">Back</button></div>`;}
+}
+function goBack(){document.getElementById("cardContainer").style.display="grid";document.getElementById("workDetails").style.display="none";}
+
+/* =================== JOIN FORM JS =================== */
+function previewForm() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const role = document.getElementById("role").value;
+  const message = document.getElementById("message").value.trim();
+  if (name === "" || email === "" || role === "") {alert("Please fill all required fields."); return;}
+  document.getElementById("previewBox").innerHTML =
+    "<h4>Preview</h4>"+
+    "<p><b>Name:</b> "+name+"</p>"+
+    "<p><b>Email:</b> "+email+"</p>"+
+    "<p><b>Role:</b> "+role+"</p>"+
+    "<p><b>Message:</b> "+message+"</p>"+
+    "<button onclick='submitForm()' class='btn'>Confirm & Submit</button>";
+}
+
+function submitForm() {
+  document.getElementById("joinForm").style.display = "none";
+  document.getElementById("previewBox").innerHTML = "";
+  document.getElementById("formPopup").style.display = "block";
+  document.getElementById("joinForm").reset();
+}
+
+function closePopup() {
+  document.getElementById("formPopup").style.display = "none";
+  document.getElementById("joinForm").style.display = "block";
+}
+</script>
+
+</body>
+</html>

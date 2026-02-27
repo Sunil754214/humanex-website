@@ -44,7 +44,35 @@ form button{width:100%;padding:12px;border:none;border-radius:30px;background:li
 footer{background:#000;text-align:center;padding:25px;}
 .social a{color:#fff;margin:0 15px;font-size:22px;transition:.3s;}
 .social a:hover{color:#ff00c8}
-.whatsapp{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;padding:15px;border-radius:50%;font-size:22px;box-shadow:0 0 20px #25D366;}
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 22px;
+    padding: 15px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+.instagram-float {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    font-size: 22px;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255,0,150,0.6);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.instagram-float:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px rgba(255,0,150,0.9);
+}
 .movable-logo{position:fixed;top:120px;left:30px;width:80px;height:80px;border-radius:50%;background:linear-gradient(45deg,#00f2fe,#ff00c8);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;cursor:grab;z-index:2000;box-shadow:0 0 20px #ff00c8;user-select:none;animation:floatLogo 3s ease-in-out infinite;}
 .movable-logo:active{cursor:grabbing;}
 @keyframes floatLogo{0%{transform:translateY(0px);}50%{transform:translateY(-15px);}100%{transform:translateY(0px);}}
@@ -60,6 +88,15 @@ footer{background:#000;text-align:center;padding:25px;}
 </style>
 </head>
 <body>
+  <!-- WhatsApp -->
+<a href="https://wa.me/919938222822" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Instagram -->
+<a href="https://www.instagram.com/humanexfoundation?igsh=MTJpbjNlYWc2bDdvYQ%3D%3D&utm_source=qr" target="_blank" class="instagram-float">
+    <i class="fab fa-instagram"></i>
+</a>
 
 <div id="preloader"><div class="intro-logo">H</div></div>
 <div class="movable-logo" id="logo">H</div>
@@ -70,6 +107,7 @@ footer{background:#000;text-align:center;padding:25px;}
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#work">What We Do</a>
+<a href="#transparency">Transparency</a>
 <a href="#join">Join Us</a>
 <a href="#contact">Contact</a>
 </nav>
@@ -100,35 +138,68 @@ Join us in turning compassion into action, and together, we can shape a brighter
 <section id="work">
 <h3 style="text-align:center;margin-bottom:40px;">What We Do</h3>
 <div class="cards" id="cardContainer">
-<div class="card" onclick="openWork(1)"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><div style="padding:20px;">Disaster Relief & Humanitarian Assistance</div></div>
-<div class="card" onclick="openWork(2)"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><div style="padding:20px;">Medical & Emergency Support</div></div>
-<div class="card" onclick="openWork(3)"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><div style="padding:20px;">Community & Food Support Programs</div></div>
+<div class="card" onclick="openWork(1)"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><div style="padding:20px;"> Humanitarian Assistance</div></div>
+<div class="card" onclick="openWork(2)"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><div style="padding:20px;">Medical & Emergency help</div></div>
+<div class="card" onclick="openWork(3)"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><div style="padding:20px;">Food & Essential Support</div></div>
+<div class="card" onclick="openWork(4)">
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac" alt="Community Support">
+    <h3>Community Support Initiative</h3>
+</div>
 </div>
 <div id="workDetails"></div>
 </section>
+<!-- =================== transparency =================== -->
+<section id="transparency">
+<h3 style="text-align:center;margin-bottom:40px;">Transparency & Accountability</h3>
 
+<div class="cards" id="transparencyCard">
+  <div class="card" onclick="openTransparency()">
+    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85">
+    <div style="padding:20px;">Financial Transparency & Ethical Operations</div>
+  </div>
+</div>
+
+<div id="transparencyDetails" style="display:none;margin-top:50px;"></div>
+
+</section>
+<!-- =================== JOIN US FORM =================== -->
 <!-- =================== JOIN US FORM =================== -->
 <section id="join">
 <h3 style="text-align:center;margin-bottom:40px;">Join Us</h3>
-<form id="joinForm">
-  <input type="text" id="name" placeholder="Full Name" required>
-  <input type="email" id="email" placeholder="Email Address" required>
-  <select id="role" required>
+
+<form id="joinForm" action="https://formsubmit.co/humanexfoundation@gmail.com" method="POST">
+
+  <input type="text" name="Full Name" id="name" placeholder="Full Name" required>
+
+  <input type="email" name="Email" id="email" placeholder="Email Address" required>
+
+  <input type="tel" name="Phone Number" id="phone" placeholder="Phone Number" required>
+
+  <select name="Role" id="role" required>
     <option value="">Select Role</option>
     <option>Volunteer</option>
     <option>Medical Support</option>
     <option>Field Coordinator</option>
     <option>General Supporter</option>
   </select>
-  <textarea id="message" placeholder="Why do you want to join?"></textarea>
+
+  <textarea name="Message" id="message" placeholder="Why do you want to join?"></textarea>
+
+  <!-- Hidden Email Settings -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Volunteer Registration - Humanex Foundation">
+  <input type="hidden" name="_template" value="table">
+
+  <!-- Optional: Redirect back to your site after submit -->
+  <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
   <button type="button" onclick="previewForm()">Preview</button>
+  <button type="submit" style="display:none;" id="realSubmit"></button>
+
 </form>
+
 <div id="previewBox" style="margin-top:20px;"></div>
-<div id="formPopup">
-<h3>Form Submitted!</h3>
-<p>Thank you for joining Humanex Foundation. We will contact you soon.</p>
-<button class="close-popup" onclick="closePopup()">Close</button>
-</div>
+
 </section>
 
 <section id="contact">
@@ -136,19 +207,21 @@ Join us in turning compassion into action, and together, we can shape a brighter
 <p style="text-align:center;">
 Email: humanexfoundation@gmail.com<br>
 Location:Kendrapara  Odisha
-Contact:9878895558
+
 </p>
 </section>
 
 <footer>
-© 2026 Humanex Foundation | Registration under process
+© 2026 Humanex Foundation |  Initiative in Initial Phase, No tax exemption can be claimed at present
 <div class="social">
 <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
 </div>
 </footer>
 
 <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
+<a href="https://instagram.com/YOUR_USERNAME" target="_blank" class="instagram-float">
+    <i class="fab fa-instagram"></i>
+</a>
 <script>
 window.addEventListener("load",function(){
 setTimeout(function(){document.getElementById("preloader").style.display="none";},4000);
@@ -165,7 +238,7 @@ document.addEventListener("mouseup",()=>{isDragging=false;logo.style.cursor="gra
 function openWork(type){
 document.getElementById("cardContainer").style.display="none";
 const details=document.getElementById("workDetails"); details.style.display="block";
-if(type===1){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><h2>Disaster Relief & Humanitarian Assistance</h2>
+if(type===1){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce"><h2> Humanitarian Assistance</h2>
 <p>At Humanex Foundation, we respond swiftly and effectively to crises, ensuring that affected communities receive timely and meaningful support. Our disaster relief efforts are designed to bring hope and stability in the most challenging situations. Key initiatives include:</p>
 
 <ul>
@@ -178,7 +251,7 @@ if(type===1){details.innerHTML=`<div class="work-detail-box"><img src="https://i
 
 <p>Through our focused efforts, Humanex Foundation ensures that relief reaches those who need it most—fast, fair, and with compassion at the core of every action.</p>
 <button class="back-btn" onclick="goBack()">Back</button></div>`;}
-if(type===2){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><h2>Medical & Emergency Support</h2>
+if(type===2){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309"><h2>Medical & Emergency Help</h2>
 <p>Humanex Foundation provides timely medical assistance to communities in need. Our initiatives focus on ensuring health and well-being for everyone, especially during emergencies:</p>
 
 <ul>
@@ -189,7 +262,7 @@ if(type===2){details.innerHTML=`<div class="work-detail-box"><img src="https://i
 
 <p>We believe that access to healthcare is a right, and our mission is to provide help when it matters most.</p>
 <button class="back-btn" onclick="goBack()">Back</button></div>`;}
-if(type===3){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><h2>Community & Food Support Programs</h2>
+if(type===3){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1602052577122-f73b9710adba"><h2>Food and Essential Support</h2>
 <p>We work to strengthen communities by ensuring basic needs are met and people are supported with dignity:</p>
 
 <ul>
@@ -200,36 +273,98 @@ if(type===3){details.innerHTML=`<div class="work-detail-box"><img src="https://i
 
 <p>Our goal is to create resilient communities where no one is left behind and everyone has the opportunity to thrive.</p>
 <button class="back-btn" onclick="goBack()">Back</button></div>`;}
-}
-function goBack(){document.getElementById("cardContainer").style.display="grid";document.getElementById("workDetails").style.display="none";}
+if(type===4){details.innerHTML=`<div class="work-detail-box"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac"><h2>Community Support Initiatives</h2>
 
+<p>
+At Humanex Foundation, our Community Support Initiatives focus on building stronger, self-reliant, and compassionate communities. We believe real change begins at the grassroots level, where support, awareness, and unity create long-term impact.
+</p>
+
+<ul>
+<li><b>Local Welfare Drives:</b> Organizing clothing distribution, hygiene kits, and essential supplies for underprivileged families.</li>
+
+<li><b>Food Security Programs:</b> Conducting regular food distribution drives to ensure no family sleeps hungry.</li>
+
+<li><b>Educational Assistance:</b> Providing school materials, awareness workshops, and mentorship support to children in need.</li>
+
+<li><b>Women & Youth Empowerment:</b> Encouraging skill development, leadership training, and community participation.</li>
+
+<li><b>Awareness Campaigns:</b> Promoting health, sanitation, environmental care, and social responsibility programs.</li>
+</ul>
+
+<p>
+Through collaboration, transparency, and community involvement, Humanex Foundation aims to create sustainable solutions that uplift lives and inspire collective growth.
+</p>
+<button class="back-btn" onclick="goBack()">Back</button></div>`;}
+}
+
+function goBack(){document.getElementById("cardContainer").style.display="grid";document.getElementById("workDetails").style.display="none";}
+/* =================== TRANSPARENCY =================== */
+
+function openTransparency(){
+  document.getElementById("transparencyCard").style.display="none";
+  const details=document.getElementById("transparencyDetails");
+  details.style.display="block";
+
+  details.innerHTML=`
+  <div class="work-detail-box">
+    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85">
+    <h2>Financial Transparency & Ethical Operations</h2>
+
+    <p>
+    At Humanex Foundation, transparency is at the heart of everything we do.
+    We are committed to maintaining clear financial records, responsible fund
+    utilization, and ethical operations in all our programs.
+    </p>
+
+    <ul style="text-align:left;max-width:800px;margin:20px auto;">
+      <li><b>Clear Fund Usage:</b> Every donation is allocated responsibly to verified initiatives.</li>
+      <li><b>Public Accountability:</b> Activity updates and impact reports shared openly.</li>
+      <li><b>Ethical Governance:</b> Decisions guided by integrity and community benefit.</li>
+      <li><b>Zero Misuse Policy:</b> Strict monitoring to ensure funds serve intended causes.</li>
+    </ul>
+
+    <p>
+    We believe trust is earned through action, and we are dedicated to operating
+    with honesty, clarity, and responsibility.
+    </p>
+
+    <button class="back-btn" onclick="goBackTransparency()">Back</button>
+  </div>
+  `;
+}
+
+function goBackTransparency(){
+  document.getElementById("transparencyCard").style.display="grid";
+  document.getElementById("transparencyDetails").style.display="none";
+}
 /* =================== JOIN FORM JS =================== */
+
+
+
 function previewForm() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const role = document.getElementById("role").value;
   const message = document.getElementById("message").value.trim();
-  if (name === "" || email === "" || role === "") {alert("Please fill all required fields."); return;}
+
+  if (name === "" || email === "" || role === "") {
+    alert("Please fill all required fields.");
+    return;
+  }
+
   document.getElementById("previewBox").innerHTML =
-    "<h4>Preview</h4>"+
-    "<p><b>Name:</b> "+name+"</p>"+
-    "<p><b>Email:</b> "+email+"</p>"+
-    "<p><b>Role:</b> "+role+"</p>"+
-    "<p><b>Message:</b> "+message+"</p>"+
+    "<h4>Preview</h4>" +
+    "<p><b>Name:</b> " + name + "</p>" +
+    "<p><b>Email:</b> " + email + "</p>" +
+    "<p><b>Role:</b> " + role + "</p>" +
+    "<p><b>Message:</b> " + message + "</p>" +
     "<button onclick='submitForm()' class='btn'>Confirm & Submit</button>";
 }
 
 function submitForm() {
-  document.getElementById("joinForm").style.display = "none";
-  document.getElementById("previewBox").innerHTML = "";
-  document.getElementById("formPopup").style.display = "block";
-  document.getElementById("joinForm").reset();
+  document.getElementById("realSubmit").click();
 }
 
-function closePopup() {
-  document.getElementById("formPopup").style.display = "none";
-  document.getElementById("joinForm").style.display = "block";
-}
 </script>
 
 </body>
